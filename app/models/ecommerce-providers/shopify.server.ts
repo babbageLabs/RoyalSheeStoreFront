@@ -1,16 +1,17 @@
-import { Decimal } from "decimal.js";
+import {Decimal} from "decimal.js";
 
 import type {
-  EcommerceProvider,
   Category,
-  Page,
-  Product,
+  EcommerceProvider,
   FullCartItem,
   FullWishlistItem,
+  Page,
+  Product,
 } from "../ecommerce-provider.server";
-import type { RequestResponseCache } from "../request-response-cache.server";
+import {formatPrice} from "../ecommerce-provider.server";
+import type {RequestResponseCache} from "../request-response-cache.server";
 
-import { getTranslations } from "~/translations.server";
+import {getTranslations} from "~/translations.server";
 
 export interface ShopifyProviderOptions {
   cache?: RequestResponseCache;
@@ -171,6 +172,8 @@ export function createShopifyProvider({
           title,
         })
       );
+
+      console.log(444444444444444, products);
 
       return products;
     },
@@ -417,16 +420,6 @@ export function createShopifyProvider({
       return fullItems;
     },
   };
-}
-
-function formatPrice({
-  amount,
-  currencyCode,
-}: {
-  amount: string;
-  currencyCode: string;
-}) {
-  return `$${amount} ${currencyCode}`;
 }
 
 let createCheckoutUrlMutation = /* GraphQL */ `
