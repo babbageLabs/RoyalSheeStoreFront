@@ -10,3 +10,7 @@ node_modules
 /cypress/videos
 /cypress/screenshots
 /runner-results
+
+.idea
+.cache
+package-lock.json
